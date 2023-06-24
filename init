@@ -1,0 +1,40 @@
+class Recipe:
+    def __init__(self, name, ingredients, instructions):
+        self.name = name
+        self.ingredients = ingredients
+        self.instructions = instructions
+
+    def display_recipe(self):
+        print(f"Recipe Name: {self.name}")
+        print("Ingredients:")
+        for ingredient in self.ingredients:
+            print(f"- {ingredient}")
+        print("Instructions:")
+        for step, instruction in enumerate(self.instructions, 1):
+            print(f"Step {step}: {instruction}")
+
+class Cookbook:
+    def __init__(self):
+        self.recipes = []
+
+    def add_recipe(self, recipe):
+        self.recipes.append(recipe)
+
+    def display_recipes(self):
+        if len(self.recipes) == 0:
+            print("No recipes in the cookbook.")
+        else:
+            print("Recipes in the Cookbook:")
+            for recipe in self.recipes:
+                recipe.display_recipe()
+
+if __name__ == '__main__':
+    cookbook = Cookbook()
+
+    recipe1 = Recipe("Pasta Carbonara", ["Spaghetti", "Bacon", "Eggs", "Parmesan Cheese", "Black Pepper"], ["Cook the spaghetti according to the package instructions.", "In a pan, cook the bacon until crispy.", "In a bowl, whisk the eggs and Parmesan cheese.", "Drain the cooked spaghetti and add it to the pan with bacon.", "Turn off the heat and add the egg mixture, tossing the spaghetti to coat evenly.", "Season with black pepper and serve."])
+    cookbook.add_recipe(recipe1)
+
+    recipe2 = Recipe("Chicken Tikka Masala", ["Chicken", "Yogurt", "Tomato Sauce", "Spices", "Cream"], ["Marinate the chicken pieces in yogurt and spices for at least 1 hour.", "Grill or bake the marinated chicken until cooked.", "In a pan, heat some oil and add the tomato sauce.", "Add the grilled chicken to the pan and simmer for a few minutes.", "Stir in the cream and cook for another few minutes.", "Serve with rice or naan bread."])
+    cookbook.add_recipe(recipe2)
+
+    cookbook.display_recipes()
